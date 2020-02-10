@@ -1,0 +1,7 @@
+#cloud-config
+k3os:
+  k3s_args:
+    - server
+    - "--no-deploy=traefik,servicelb"
+sshAuthorizedKeys:
+- github:<yourgithubname>

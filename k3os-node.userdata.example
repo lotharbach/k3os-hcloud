@@ -1,0 +1,8 @@
+#cloud-config
+k3os:
+  k3s_args:
+    - agent
+  server_url: https://<public-ip>:6443
+  token: "<node token from master /var/lib/rancher/k3s/server/node-token>"
+sshAuthorizedKeys:
+- github:<yourgithubname>
