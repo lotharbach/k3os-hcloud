@@ -20,4 +20,4 @@ hcloud server delete $VMNAME
 IMGNAME=$(hcloud image list -o columns=id,description | grep k3os_install | awk '{print $1}')
 
 echo "Snapshot is ready with ID $IMGNAME. Example for VM creation:"
-echo "hcloud server create --image $IMGNAME --ssh-key yourkey --type cx11 --name k3os-1 --user-data-from-file k3os-node.userdata"
+echo "hcloud server create --image $IMGNAME --type cx11 --name k3os-1 --user-data-from-file k3os-node.userdata"

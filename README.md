@@ -26,7 +26,7 @@ hcloud server delete k3os-install
 * Launch k3os VMs from that snapshot, as many as you like.
 ```
 IMGNAME=$(hcloud image list -o columns=id,description | grep k3os_install | awk '{print $1}')
-hcloud server create --image $IMGNAME --ssh-key yourkey --type cx11 --name k3os-1 --user-data-from-file k3os-master.userdata
+hcloud server create --image $IMGNAME --type cx11 --name k3os-1 --user-data-from-file k3os-master.userdata
 ```
 ### Alternatives?
 There is a packer provider for hetzner cloud that also creates customized disk snapshots as a bootable image source.
