@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# install requirements
+apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes --show-progress kexec-tools
+
+# download kernel+initrd
+cd /root
+wget -O vmlinuz https://github.com/rancher/k3os/releases/download/v0.9.0-rc5/k3os-vmlinuz-amd64
+wget -O initrd https://github.com/rancher/k3os/releases/download/v0.9.0-rc5/k3os-initrd-amd64
+
+# run kexec
+kexec --initrd ./initrd --command-line='k3os.mode=install k3os.install.silent=true k3os.install.power_off=true k3os.install.device=/dev/sda k3os.install.iso_url=https://github.com/rancher/k3os/releases/download/v0.9.0-rc5/k3os-amd64.iso k3os.install.config_url=https://gist.githubusercontent.com/gesslein/5adef3bf2b6a5b576e74f9257b60db48/raw/a2ac71f5228c7219e0593eca16754ea8af29f1c4/k3os-datasource-hetzner.yaml' ./vmlinuz
+
